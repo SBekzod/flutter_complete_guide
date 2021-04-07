@@ -7,8 +7,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext ctx) {
-    return MaterialApp(home: Scaffold(
-      appBar: AppBar(title: Text('My Application'), ),
-    ), );
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My Application'),
+        ),
+        body: Text('This is my default text, HURRAY!'),
+      ),
+    );
   }
 }
