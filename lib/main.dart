@@ -7,6 +7,10 @@ class MyApp extends StatelessWidget {
     print('You pressed one of the buttons name $numb');
   }
 
+  void gettingPressedThird() {
+    print('You pressed one of the buttons name third');
+  }
+
   @override
   Widget build(BuildContext ctx) {
     var question = [
@@ -29,11 +33,12 @@ class MyApp extends StatelessWidget {
             ),
             ElevatedButton(
               child: Text('Answer two'),
-              onPressed: () => {gettingPressed(2)},
+              onPressed: () =>
+                  {print('You pressed one of the buttons name two')},
             ),
             ElevatedButton(
               child: Text('Answer three'),
-              onPressed: () => {gettingPressed(3)},
+              onPressed: gettingPressedThird,
             ),
           ],
         ),
