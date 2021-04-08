@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(new MyApp());
-}
+void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
+  void gettingPressed(int numb) {
+    print('You pressed one of the buttons name $numb');
+  }
+
   @override
   Widget build(BuildContext ctx) {
     var question = [
@@ -13,7 +15,6 @@ class MyApp extends StatelessWidget {
       'What\'s your favorite animals?',
       'What\'s your favorite movie?'
     ];
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -22,17 +23,17 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Text('The Question!'),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Answer one'),
-              onPressed: null,
+              onPressed: () => {gettingPressed(1)},
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Answer two'),
-              onPressed: null,
+              onPressed: () => {gettingPressed(2)},
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Answer three'),
-              onPressed: null,
+              onPressed: () => {gettingPressed(3)},
             ),
           ],
         ),
