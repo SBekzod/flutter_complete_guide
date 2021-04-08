@@ -2,14 +2,21 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
 
-class MyApp extends StatelessWidget {
 
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   var number = 0;
 
   void gettingPressed(int numb) {
-    number++;
-    print('here is the number: $number');
-    print('You pressed one of the buttons name $numb');
+    setState(() {
+      number++;
+      print('Here is the number value: $number');
+    });
+
   }
 
   @override
