@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
 
-
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  var number = 0;
+  var _number = 0;
 
   void gettingPressed(int numb) {
     setState(() {
-      number++;
-      print('Here is the number value: $number');
+      _number++;
+      print('Here is the number value: $_number');
     });
-
   }
 
   @override
@@ -35,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: <Widget>[
-            Text(question.elementAt(number)),
+            Text(question.elementAt(_number)),
             ElevatedButton(
               child: Text('Answer one'),
               onPressed: () => {gettingPressed(1)},
@@ -54,3 +52,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
