@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('My Application: Let\'s Have a Quiz'),
+          title: Text('My Application'),
         ),
         body: Column(
           children: <Widget>[
