@@ -12,7 +12,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _number = 0;
 
-  void gettingPressed(int numb) {
+  void gettingPressed(String type) {
+    print('the button type: $type');
     setState(() {
       _number++;
       print('Here is the number value: $_number');
@@ -37,13 +38,12 @@ class _MyAppState extends State<MyApp> {
           children: <Widget>[
             // Text(question.elementAt(_number)),
             Question(question.elementAt(_number)),
-            Answer(),
-            Answer(),
-            Answer(),
+            Answer(this.gettingPressed),
+            Answer(gettingPressed),
+            Answer(gettingPressed),
           ],
         ),
       ),
     );
   }
 }
-

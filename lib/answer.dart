@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
+  final Function selectHandler;
+
+  Answer(this.selectHandler);
 
   @override
   Widget build(BuildContext context) {
@@ -8,12 +11,14 @@ class Answer extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          onPrimary: Colors.deepPurpleAccent,
-          primary: Colors.purpleAccent
+          onPrimary: Colors.white,
+          primary: Colors.purpleAccent,
+          textStyle: TextStyle(fontSize: 30),
         ),
-        child: Text('Answer one'),
+        child: Text('Answers one'),
         onPressed: () => {
-          print('no specified')
+          this.selectHandler('ordinary'),
+          print('* the button was pressed *')
         },
       ),
     );
