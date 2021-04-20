@@ -13,6 +13,21 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _number = 0;
 
+  static const question = [
+    {
+      'question': 'programming language',
+      'answers': ['NodeJS', 'Python', 'JAVA', 'PHP']
+    },
+    {
+      'question': 'web framework',
+      'answers': ['ExpressJS', 'Django', 'Spring', 'NESTJS']
+    },
+    {
+      'question': 'animals',
+      'answers': ['dog', 'horse', 'cat', 'another']
+    }
+  ];
+
   void gettingPressed(String type) {
     print('The chosen answer is: $type');
     setState(() {
@@ -23,20 +38,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext ctx) {
-    var question = [
-      {
-        'question': 'programming language',
-        'answers': ['NodeJS', 'Python', 'JAVA', 'PHP']
-      },
-      {
-        'question': 'web framework',
-        'answers': ['ExpressJS', 'Django', 'Spring', 'NESTJS']
-      },
-      {
-        'question': 'animals',
-        'answers': ['dog', 'horse', 'cat', 'another']
-      }
-    ];
 
     return MaterialApp(
       home: Scaffold(
@@ -46,12 +47,9 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Question(question[_number]['question']),
-            Column(
-              children: [
-                for (int i = 0; i < 4; i++)
-                  Answer(this.gettingPressed, (question[_number]['answers'] as List<String>)[i])
-              ],
-            ),
+            ...(question[_number]['answers'] as List<String>).map((ele) {
+              return Answer(gettingPressed, ele);
+            }).toList()
           ],
         ),
       ),
