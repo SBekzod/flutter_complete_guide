@@ -13,7 +13,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _number = 0;
 
-  static const question = [
+  final question = [
     {
       'question': 'programming language',
       'answers': ['NodeJS', 'Python', 'JAVA', 'PHP']
@@ -38,20 +38,30 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext ctx) {
+    var totalQuestions = this.question.length;
+    print('this is totalQuestions value: $totalQuestions');
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('My Application'),
         ),
-        body: Column(
-          children: <Widget>[
-            Question(question[_number]['question']),
-            ...(question[_number]['answers'] as List<String>).map((ele) {
-              return Answer(gettingPressed, ele);
-            }).toList()
-          ],
-        ),
+        body: (_number < totalQuestions)
+            ? Column(
+                children: <Widget>[
+                  Question(question[_number]['question']),
+                  ...(question[_number]['answers'] as List<String>).map((ele) {
+                    return Answer(gettingPressed, ele);
+                  }).toList()
+                ],
+              )
+            : Center(
+                child: Text(
+                  'Congrats, You answered all of the question',
+                  style: TextStyle(color: Colors.green, fontSize: 40),
+                  textAlign: TextAlign.center,
+                ),
+              ),
       ),
     );
   }
