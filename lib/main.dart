@@ -1,7 +1,9 @@
+import 'package:complete_guide/quiz.dart';
+import 'package:complete_guide/result.dart';
 import 'package:flutter/material.dart';
 import 'package:complete_guide/question.dart';
 import 'package:complete_guide/answer.dart';
-import 'QuestionAnswers.dart';
+import 'questionAnswers.dart';
 
 void main() => runApp(new MyApp());
 
@@ -12,8 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _number = 0;
-
-  final question = [
+  final _question = [
     {
       'question': 'programming language',
       'answers': ['NodeJS', 'Python', 'JAVA', 'PHP']
@@ -28,17 +29,17 @@ class _MyAppState extends State<MyApp> {
     }
   ];
 
-  void gettingPressed(String type) {
+  void _gettingPressed(String type) {
     print('The chosen answer is: $type');
     setState(() {
-      _number++;
-      print('Question: $_number was answered!');
+      this._number++;
+      print('Question: ${this._number} was answered!');
     });
   }
 
   @override
   Widget build(BuildContext ctx) {
-    var totalQuestions = this.question.length;
+    var totalQuestions = this._question.length;
     print('this is totalQuestions value: $totalQuestions');
 
     return MaterialApp(
@@ -46,22 +47,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('My Application'),
         ),
-        body: (_number < totalQuestions)
-            ? Column(
-                children: <Widget>[
-                  Question(question[_number]['question']),
-                  ...(question[_number]['answers'] as List<String>).map((ele) {
-                    return Answer(gettingPressed, ele);
-                  }).toList()
-                ],
-              )
-            : Center(
-                child: Text(
-                  'Congrats, You answered all of the question',
-                  style: TextStyle(color: Colors.green, fontSize: 40),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+        body: (this._number < totalQuestions)
+            ? Quiz(
+                number: this._number,
+                gettingPressed: this._gettingPressed,
+                question: this._question)
+            : Result(),
       ),
     );
   }
