@@ -23,7 +23,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext ctx) {
-    var question = new QuestAnswers();
+    var question = [
+      {
+        'question': 'programming language',
+        'answers': ['NodeJS', 'Python', 'JAVA', 'PHP']
+      },
+      {
+        'question': 'web framework',
+        'answers': ['ExpressJS', 'Django', 'Spring', 'NESTJS']
+      },
+      {
+        'question': 'animals',
+        'answers': ['dog', 'horse', 'cat', 'another']
+      }
+    ];
 
     return MaterialApp(
       home: Scaffold(
@@ -32,11 +45,11 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: <Widget>[
-            Question(question.getQuestion(_number)),
+            Question(question[_number]['question']),
             Column(
               children: [
                 for (int i = 0; i < 4; i++)
-                  Answer(this.gettingPressed, question.getAnswer(_number, i))
+                  Answer(this.gettingPressed, (question[_number]['answers'] as List<String>)[i])
               ],
             ),
           ],
