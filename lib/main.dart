@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:complete_guide/question.dart';
 import 'package:complete_guide/answer.dart';
+import 'QuestionAnswers.dart';
 
 void main() => runApp(new MyApp());
 
@@ -13,21 +14,16 @@ class _MyAppState extends State<MyApp> {
   var _number = 0;
 
   void gettingPressed(String type) {
-    print('the button type: $type');
+    print('The chosen answer is: $type');
     setState(() {
       _number++;
-      print('Here is the number value: $_number');
+      print('Question: $_number was answered!');
     });
   }
 
   @override
   Widget build(BuildContext ctx) {
-    var question = [
-      'What\'s your favorite programming language?',
-      'What\'s your favorite framework?',
-      'What\'s your favorite animals?',
-      'What\'s your favorite movie?'
-    ];
+    var question = new QuestAnswers();
 
     return MaterialApp(
       home: Scaffold(
@@ -36,11 +32,13 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: <Widget>[
-            // Text(question.elementAt(_number)),
-            Question(question.elementAt(_number)),
-            Answer(this.gettingPressed),
-            Answer(gettingPressed),
-            Answer(gettingPressed),
+            Question(question.getQuestion(_number)),
+            Column(
+              children: [
+                for (int i = 0; i < 4; i++)
+                  Answer(this.gettingPressed, question.getAnswer(_number, i))
+              ],
+            ),
           ],
         ),
       ),

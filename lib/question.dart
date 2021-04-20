@@ -11,7 +11,7 @@ class Question extends StatelessWidget {
       margin: EdgeInsets.all(20),
       width: double.infinity,
       child: Text(
-        'The question: $text',
+        'What is your favorite ${this.text}',
         style: TextStyle(color: Colors.black87, fontSize: 24),
         textAlign: TextAlign.center,
       ),
