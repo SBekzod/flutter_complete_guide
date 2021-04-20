@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _number = 0;
-  var totalScore = 0;
+  var _totalScore = 0;
   final _question = [
     {
       'question': 'programming language',
@@ -49,8 +49,16 @@ class _MyAppState extends State<MyApp> {
     print('The chosen answer is: $type');
     setState(() {
       this._number++;
-      this.totalScore += score;
+      this._totalScore += score;
       print('Question: ${this._number} was answered!');
+    });
+  }
+
+  void _restartHandler() {
+    setState(() {
+      this._number = 0;
+      this._totalScore = 0;
+      print('The statistics set to zero!');
     });
   }
 
@@ -69,7 +77,9 @@ class _MyAppState extends State<MyApp> {
                 number: this._number,
                 gettingPressed: this._gettingPressed,
                 question: this._question)
-            : Result(totalScore: this.totalScore),
+            : Result(
+                totalScore: this._totalScore,
+                restartHandler: this._restartHandler),
       ),
     );
   }
