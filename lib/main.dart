@@ -14,25 +14,42 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _number = 0;
+  var totalScore = 0;
   final _question = [
     {
       'question': 'programming language',
-      'answers': ['NodeJS', 'Python', 'JAVA', 'PHP']
+      'answers': [
+        {'text': 'NodeJS', 'score': 10},
+        {'text': 'Python', 'score': 10},
+        {'text': 'JAVA', 'score': 7},
+        {'text': 'PHP', 'score': 7},
+      ]
     },
     {
       'question': 'web framework',
-      'answers': ['ExpressJS', 'Django', 'Spring', 'NESTJS']
+      'answers': [
+        {'text': 'ExpressJS', 'score': 9},
+        {'text': 'Django', 'score': 9},
+        {'text': 'Spring', 'score': 8},
+        {'text': 'CodeIgniter', 'score': 6},
+      ]
     },
     {
       'question': 'animals',
-      'answers': ['dog', 'horse', 'cat', 'another']
+      'answers': [
+        {'text': 'dog', 'score': 7},
+        {'text': 'horse', 'score': 6},
+        {'text': 'cat', 'score': 3},
+        {'text': 'another', 'score': 5},
+      ]
     }
   ];
 
-  void _gettingPressed(String type) {
+  void _gettingPressed(String type, int score) {
     print('The chosen answer is: $type');
     setState(() {
       this._number++;
+      this.totalScore += score;
       print('Question: ${this._number} was answered!');
     });
   }
@@ -40,7 +57,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext ctx) {
     var totalQuestions = this._question.length;
-    print('this is totalQuestions value: $totalQuestions');
+    // print('this is totalQuestions value: $totalQuestions');
 
     return MaterialApp(
       home: Scaffold(
@@ -52,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                 number: this._number,
                 gettingPressed: this._gettingPressed,
                 question: this._question)
-            : Result(),
+            : Result(totalScore: this.totalScore),
       ),
     );
   }

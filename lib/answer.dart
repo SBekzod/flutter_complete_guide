@@ -17,9 +17,7 @@ class Answer extends StatelessWidget {
           textStyle: TextStyle(fontSize: 24),
         ),
         child: Text('It is ${this.answer}'),
-        onPressed: () => {
-          this.selectHandler('${this.answer}'),
-        },
+        onPressed: this.selectHandler,
       ),
     );
   }
