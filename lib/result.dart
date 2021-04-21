@@ -21,15 +21,21 @@ class Result extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Text(this.resultPhrase,
-              style: TextStyle(color: Colors.green, fontSize: 40),
-              textAlign: TextAlign.center),
-          TextButton(
-              onPressed: this.restartHandler,
-              child: Text(
-                'Restart the Quiz',
-                style: TextStyle(color: Colors.purpleAccent, fontSize: 25),
-              ))
+          Container(
+            margin: EdgeInsets.only(top: 200),
+            child: Text(this.resultPhrase,
+                style: TextStyle(color: Colors.green, fontSize: 40),
+                textAlign: TextAlign.center),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 30),
+            child: TextButton(
+                onPressed: this.restartHandler,
+                child: Text(
+                  'Restart the Quiz',
+                  style: TextStyle(color: Colors.purpleAccent, fontSize: 25),
+                )),
+          )
         ],
       ),
     );
